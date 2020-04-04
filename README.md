@@ -1,9 +1,12 @@
+<!-- Steps -->
+1. clone code from git ( git clone url)
+2. npm install
 <!-- start json server -->
-cmd 1
+3. cmd 1
 
 json-server --watch src/db.json --post 3000
 
 <!-- Run code on browser -->
-cmd 2
+4. cmd 2
 
 npm start
