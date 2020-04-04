@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-import { ButtonToggle } from "reactstrap"
-import { NavLink,withRouter } from "react-router-dom";
+import { ButtonToggle } from "reactstrap";
+import { NavLink, withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/style.css";
 import "../styles/toast.css";
 toast.configure();
 
- class Signup extends Component {
+class Signup extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
       password: "",
       usertype: "",
+      usersExist: [],
     };
   }
 
@@ -22,31 +23,43 @@ toast.configure();
       password: this.state.password,
       usertype: this.state.usertype,
     };
-
+    console.log("users", this.state.usersExist);
     if (obj.name === "" || obj.password === "" || obj.usertype === "") {
       toast.error("All fields are required !", {
         position: toast.POSITION.TOP_RIGHT,
       });
       return;
     } else {
-      console.log("obj>>>>>>>", obj);
-      fetch("http://localhost:3000/signup/", {
-        method: "Post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj),
-      }).then((res) => {
-        res.json().then((resp) => {
-          this.props.history.push("/login");
-
-          toast.success("user is added !", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+      fetch("http://localhost:3000/signup").then((data) => {
+        data.json().then((resp) => {
+          console.log("users", resp);
+          const userExist = resp.map((user) => user.name === obj.name);
+          if (userExist.includes(true) === true) {
+            toast.error("user Exist !", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          } else {
+            console.log("obj>>>>>>>", obj);
+            fetch("http://localhost:3000/signup/", {
+              method: "Post",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(obj),
+            }).then((res) => {
+              res.json().then((resp) => {
+                this.props.history.push("/login");
+                toast.success("user is added !", {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              });
+            });
+          }
         });
       });
     }
   }
+
   render() {
     return (
       <div className="container">
@@ -92,20 +105,19 @@ toast.configure();
               Already have account ?
             </NavLink>
             <ButtonToggle
-            className="aln-lft"
-            color="secondary"
-            onClick={() => {
-              this.signUp();
-            }}
-          >
-            Signup
-          </ButtonToggle>
-            </div>
-         
+              className="aln-lft"
+              color="secondary"
+              onClick={() => {
+                this.signUp();
+              }}
+            >
+              Signup
+            </ButtonToggle>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(Signup)
+export default withRouter(Signup);

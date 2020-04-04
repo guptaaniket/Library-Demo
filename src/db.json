@@ -1,40 +1,22 @@
 {
   "signup": [
     {
-      "name": "deeksha",
-      "password": "deeksha",
+      "name": "user",
+      "password": "user",
       "usertype": "user",
-      "id": 13
+      "id": 1
     },
     {
-      "name": "aniket",
-      "password": "aniket",
+      "name": "admin",
+      "password": "admin",
       "usertype": "admin",
-      "id": 14
+      "id": 2
     },
     {
-      "name": "qwety",
-      "password": "qwerty",
-      "usertype": "user",
-      "id": 15
-    },
-    {
-      "name": "qwety",
-      "password": "qwerty",
-      "usertype": "user",
-      "id": 16
-    },
-    {
-      "name": "john",
-      "password": "john",
-      "usertype": "user",
-      "id": 17
-    },
-    {
-      "name": "qwert3",
-      "password": "qwerty3",
+      "name": "Raghav",
+      "password": "Raghav",
       "usertype": "admin",
-      "id": 18
+      "id": 3
     }
   ],
   "login": [
@@ -49,32 +31,11 @@
   ],
   "library": [
     {
-      "id": "343",
-      "name": "ewresef",
-      "author": "dvdf",
-      "description": "dfbdf",
-      "price": "12312"
-    },
-    {
-      "id": "324",
-      "name": "dfgdf",
-      "author": "dfgdfgd",
-      "description": "dgdgr",
-      "price": "4543"
-    },
-    {
-      "id": "wefwe",
-      "name": "esgsf",
-      "author": "sefsf",
-      "description": "gsdrgsrg",
-      "price": "3234"
-    },
-    {
-      "id": "32423",
-      "name": "etert",
-      "author": "wefewtew",
-      "description": "wetewt",
-      "price": "3244"
+      "id": "123",
+      "name": "qwerty",
+      "author": "qwerty",
+      "description": "qwerty",
+      "price": "1234"
     }
   ]
 }

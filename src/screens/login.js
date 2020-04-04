@@ -17,10 +17,11 @@ export default class Login extends Component {
 
   login() {
     const obj = {
-      email: this.state.email,
+      name: this.state.name,
       password: this.state.password,
     };
-    if (obj.email === "" || obj.password === "") {
+   
+    if (obj.name === "" || obj.password === "") {
       toast.error("All fields are required !", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -61,7 +62,7 @@ export default class Login extends Component {
               className="form-control mb"
               type="text"
               placeholder="John"
-              name="user"
+              name="name"
               onChange={(e) => {
                 this.setState({ name: e.target.value });
               }}
