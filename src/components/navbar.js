@@ -3,12 +3,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink as Link
+  NavLink as Link,
 } from "react-router-dom";
 import "../styles/style.css";
 
 export default class Navbar extends Component {
   render() {
+    const userType = localStorage.getItem("login");
+    const data = JSON.parse(userType);
     return (
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light nav-clr mb">
@@ -25,6 +27,16 @@ export default class Navbar extends Component {
                 </Link>
               </li>
             </ul>
+            {
+              typeof data === "undefined" ? '' : data[0].usertype == "user" ? (
+              <ul class="navbar-nav">
+                <li className="nav-item">
+                  <Link to={"/cart"} className="nav-link">
+                    Cart
+                  </Link>
+                </li>
+              </ul>
+            ):''}
 
             {localStorage.getItem("login") ? (
               <ul class="navbar-nav">

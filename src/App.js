@@ -7,6 +7,7 @@ import Signup from "./screens/signup";
 import Booklist from "./screens/booklist";
 import Logout from "./components/logout";
 import Protected from "./components/protected";
+import Cart from "./screens/cart";
 
 class App extends Component {
   render() {
@@ -14,7 +15,8 @@ class App extends Component {
       <Router>
         <Switch>
         {/* protected route */}
-          <Protected exact path="/booklist" component={Booklist} />
+          <Protected exact path="/booklist" component={Booklist} />z
+          <Protected exact path="/cart" component={Cart} />
           <Protected exact path="/" component={Home} />
 
         {/* public route */}

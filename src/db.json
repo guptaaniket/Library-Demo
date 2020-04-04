@@ -1,4 +1,18 @@
 {
+  "signup": [
+    {
+      "name": "deeksha",
+      "password": "deeksha",
+      "usertype": "user",
+      "id": 13
+    },
+    {
+      "name": "aniket",
+      "password": "aniket",
+      "usertype": "admin",
+      "id": 14
+    }
+  ],
   "login": [
     {
       "name": "user",
@@ -11,53 +25,32 @@
   ],
   "library": [
     {
-      "id": 1001,
-      "name": "test book1",
-      "author": "Writer1",
-      "description": "good book",
-      "price": 500
+      "id": "343",
+      "name": "ewresef",
+      "author": "dvdf",
+      "description": "dfbdf",
+      "price": "12312"
     },
     {
-      "id": 1003,
-      "name": "test book3",
-      "author": "Writer3",
-      "description": "good book",
-      "price": 500
+      "id": "324",
+      "name": "dfgdf",
+      "author": "dfgdfgd",
+      "description": "dgdgr",
+      "price": "4543"
     },
     {
-      "id": 1005,
-      "name": "test book5",
-      "author": "Writer5",
-      "description": "good book",
-      "price": 500
+      "id": "wefwe",
+      "name": "esgsf",
+      "author": "sefsf",
+      "description": "gsdrgsrg",
+      "price": "3234"
     },
     {
-      "id": 1006,
-      "name": "test book6",
-      "author": "Writer6",
-      "description": "good book",
-      "price": 500
-    },
-    {
-      "id": 1006,
-      "name": "test book6",
-      "author": "Writer6",
-      "description": "good book",
-      "price": 500
-    },
-    {
-      "id": "8",
-      "name": "qwerty",
-      "author": "qwerty",
-      "description": "qwerty",
-      "price": "888"
-    },
-    {
-      "id": "435",
-      "name": "shdfs",
-      "author": "skbdgkjsbg",
-      "description": "lsfhksdljfnsvkdb",
-      "price": "68734"
+      "id": "32423",
+      "name": "etert",
+      "author": "wefewtew",
+      "description": "wetewt",
+      "price": "3244"
     }
   ]
 }

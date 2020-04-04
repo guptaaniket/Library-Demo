@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ButtonToggle } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/style.css";
 import "../styles/toast.css";
@@ -10,34 +11,36 @@ export default class Login extends Component {
     super();
     this.state = {
       name: "",
-      password: ""
+      password: "",
     };
   }
 
   login() {
     const obj = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     if (obj.email === "" || obj.password === "") {
       toast.error("All fields are required !", {
-        position: toast.POSITION.TOP_RIGHT
+        position: toast.POSITION.TOP_RIGHT,
       });
       return;
     } else {
-      fetch("http://localhost:3000/login?q=" + this.state.name).then(data => {
-        data.json().then(resp => {
-          console.log("resp", resp);
-          if (resp.length > 0) {
-            localStorage.setItem("login", JSON.stringify(resp));
-            this.props.history.push("/booklist");
-          } else {
-            toast.error("Please check user name and password !", {
-              position: toast.POSITION.TOP_RIGHT
-            });
-          }
-        });
-      });
+      fetch("http://localhost:3000/signup?q=" + this.state.name).then(
+        (data) => {
+          data.json().then((resp) => {
+            console.log("resp", resp);
+            if (resp.length > 0) {
+              localStorage.setItem("login", JSON.stringify(resp));
+              this.props.history.push("/booklist");
+            } else {
+              toast.error("Please check user name and password !", {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+            }
+          });
+        }
+      );
     }
   }
   render() {
@@ -55,11 +58,11 @@ export default class Login extends Component {
           <h4 className="mb">Login</h4>
           <div>
             <input
-              className="mb"
+              className="form-control mb"
               type="text"
               placeholder="John"
               name="user"
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ name: e.target.value });
               }}
             ></input>
@@ -67,25 +70,29 @@ export default class Login extends Component {
 
           <div>
             <input
-              className="mb"
+              className="form-control mb"
               type="password"
               placeholder="******"
               name="password"
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ password: e.target.value });
               }}
             ></input>
           </div>
-
-          <ButtonToggle
-            className="aln-lft"
-            color="secondary"
-            onClick={() => {
-              this.login();
-            }}
-          >
-            Login
-          </ButtonToggle>
+          <div className="flex">
+            <NavLink to="/signup" className="text-decoration-none">
+              Don't have account ?
+            </NavLink>
+            <ButtonToggle
+              className="aln-lft"
+              color="secondary"
+              onClick={() => {
+                this.login();
+              }}
+            >
+              Login
+            </ButtonToggle>
+          </div>
         </div>
       </div>
     );

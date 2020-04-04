@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { ButtonToggle } from "reactstrap";
+import { ButtonToggle } from "reactstrap"
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/style.css";
 import "../styles/toast.css";
@@ -10,31 +11,35 @@ export default class Signup extends Component {
     super();
     this.state = {
       name: "",
-      password: ""
+      password: "",
+      usertype: "",
     };
   }
 
-  login() {
+  signUp() {
     const obj = {
-      email: this.state.email,
-      password: this.state.password
+      name: this.state.name,
+      password: this.state.password,
+      usertype: this.state.usertype,
     };
-    if (obj.email === "" || obj.password === "") {
+
+    if (obj.name === "" || obj.password === "" || obj.usertype === "") {
       toast.error("All fields are required !", {
-        position: toast.POSITION.TOP_RIGHT
+        position: toast.POSITION.TOP_RIGHT,
       });
       return;
     } else {
-      fetch("http://localhost:3000/login", {
+      console.log("obj>>>>>>>", obj);
+      fetch("http://localhost:3000/signup/", {
         method: "Post",
         headers: {
-          "Content-Type": "user/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(this.state)
-      }).then(res => {
-        res.json().then(resp => {   
+        body: JSON.stringify(obj),
+      }).then((res) => {
+        res.json().then((resp) => {
           toast.success("user is added !", {
-            position: toast.POSITION.TOP_RIGHT
+            position: toast.POSITION.TOP_RIGHT,
           });
         });
       });
@@ -42,42 +47,59 @@ export default class Signup extends Component {
   }
   render() {
     return (
-      <div className="container">    
+      <div className="container">
         <div className="lg-card">
           <h4 className="mb">Signup</h4>
           <div>
             <input
-              className="mb"
+              className="form-control mb"
               type="text"
               placeholder="John"
-              name="user"
-              onChange={e => {
+              name="email"
+              onChange={(e) => {
                 this.setState({ name: e.target.value });
               }}
             ></input>
           </div>
-
+          <div>
+            <select
+              class="form-control mb"
+              id="exampleFormControlSelect1"
+              onChange={(e) => {
+                this.setState({ usertype: e.target.value });
+              }}
+            >
+              <option selected>Select User</option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
           <div>
             <input
-              className="mb"
+              className="form-control mb"
               type="password"
               placeholder="******"
               name="password"
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ password: e.target.value });
               }}
             ></input>
           </div>
-
-          <ButtonToggle
+          <div className="flex">
+            <NavLink to="/login" className="text-decoration-none">
+              Already have account ?
+            </NavLink>
+            <ButtonToggle
             className="aln-lft"
             color="secondary"
             onClick={() => {
-              this.login();
+              this.signUp();
             }}
           >
             Signup
           </ButtonToggle>
+            </div>
+         
         </div>
       </div>
     );

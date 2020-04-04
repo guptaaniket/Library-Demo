@@ -28,7 +28,8 @@ export default class Booklist extends Component {
       list: null,
       show: false,
       searchData: null,
-      noData: false
+      noData: false,
+      cart: []
     };
   }
 
@@ -45,12 +46,22 @@ export default class Booklist extends Component {
   getData() {
     fetch("http://localhost:3000/library").then(response => {
       response.json().then(res => {
-        console.log("res", res[0].id);
         this.setState({ list: res });
       });
     });
   }
-
+  
+  //cart
+  buyNow(item) {
+    var items = JSON.parse(localStorage.getItem('item') || "[]");
+    console.log("item",items)
+    items.push(item);
+    localStorage.setItem("item",JSON.stringify(items))
+        toast.success("Book is added to cart !", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+       
+  }
   //add new book
   addBook() {
     const obj = {
@@ -121,7 +132,7 @@ export default class Booklist extends Component {
   render() {
     const userType = localStorage.getItem("login");
     const data = JSON.parse(userType);
-    console.log("data", data[0].name);
+    console.log("data", data[0].usertype);
     return (
       <div>
         <Navbar />
@@ -137,7 +148,7 @@ export default class Booklist extends Component {
               }}
             ></input>
             {console.log("this.props", localStorage)}
-            {data[0].name == "admin" && (
+            {data[0].usertype == "admin" && (
               <ButtonToggle
                 className="aln-lft"
                 color="secondary"
@@ -156,12 +167,11 @@ export default class Booklist extends Component {
             }}
           >
             <Modal.Header closeButton className="ctr-aln">
-              <b>Enter New Book Details</b>{" "}
+              <b>Enter New Book Details</b>
             </Modal.Header>
             <ModalBody>
               <form class="login-form">
                 <Row className="form-group model-input">
-                  {" "}
                   <input
                     class="form-control"
                     type="text"
@@ -216,7 +226,7 @@ export default class Booklist extends Component {
                 <Row className="form-group model-input">
                   <input
                     class="form-control"
-                    type="text"
+                    type= "number"
                     name="price"
                     onChange={e => {
                       this.setState({ price: e.target.value });
@@ -249,9 +259,9 @@ export default class Booklist extends Component {
                   {/* <span >{item.id}</span> */}
                   <h4 style={{ textAlign: "center" }}>{item.name}</h4>
                   <p>{item.description}</p>
-                  <b>by-/{item.author}</b>
-                  <b>Price:{item.price}</b>
-                  {data[0].name == "admin" && (
+                  <b>By -/{item.author}</b>
+                  <b>Price : ${item.price}</b>
+                  {data[0].usertype == "admin" && (
                     <ButtonToggle
                       className="mt"
                       color="danger"
@@ -262,8 +272,14 @@ export default class Booklist extends Component {
                       Delete
                     </ButtonToggle>
                   )}
-                  {data[0].name == "user" && (
-                    <ButtonToggle className="mt" color="secondary">
+                  {data[0].usertype == "user" && (
+                    <ButtonToggle
+                      className="mt"
+                      color="secondary"
+                      onClick={() => {
+                        this.buyNow(item);
+                      }}
+                    >
                       Buy
                     </ButtonToggle>
                   )}
