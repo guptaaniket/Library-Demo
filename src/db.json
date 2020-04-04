@@ -1,0 +1,63 @@
+{
+  "login": [
+    {
+      "name": "user",
+      "password": "user"
+    },
+    {
+      "name": "admin",
+      "password": "admin"
+    }
+  ],
+  "library": [
+    {
+      "id": 1001,
+      "name": "test book1",
+      "author": "Writer1",
+      "description": "good book",
+      "price": 500
+    },
+    {
+      "id": 1003,
+      "name": "test book3",
+      "author": "Writer3",
+      "description": "good book",
+      "price": 500
+    },
+    {
+      "id": 1005,
+      "name": "test book5",
+      "author": "Writer5",
+      "description": "good book",
+      "price": 500
+    },
+    {
+      "id": 1006,
+      "name": "test book6",
+      "author": "Writer6",
+      "description": "good book",
+      "price": 500
+    },
+    {
+      "id": 1006,
+      "name": "test book6",
+      "author": "Writer6",
+      "description": "good book",
+      "price": 500
+    },
+    {
+      "id": "8",
+      "name": "qwerty",
+      "author": "qwerty",
+      "description": "qwerty",
+      "price": "888"
+    },
+    {
+      "id": "435",
+      "name": "shdfs",
+      "author": "skbdgkjsbg",
+      "description": "lsfhksdljfnsvkdb",
+      "price": "68734"
+    }
+  ]
+}
