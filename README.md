@@ -1,7 +1,9 @@
-cmd 1
+<!-- Steps -->
+1. clone code from git ( git clone url)
+2. npm install
 <!-- start json server -->
-json-server --watch src/db.json --post 3000
-cmd 2
-
+3. Open terminal and copy paste this json-server --watch src/db.json --post 3000
 <!-- Run code on browser -->
-npm start
+4. open another terminal and copy paste npm start
+
+
