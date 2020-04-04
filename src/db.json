@@ -11,6 +11,30 @@
       "password": "aniket",
       "usertype": "admin",
       "id": 14
+    },
+    {
+      "name": "qwety",
+      "password": "qwerty",
+      "usertype": "user",
+      "id": 15
+    },
+    {
+      "name": "qwety",
+      "password": "qwerty",
+      "usertype": "user",
+      "id": 16
+    },
+    {
+      "name": "john",
+      "password": "john",
+      "usertype": "user",
+      "id": 17
+    },
+    {
+      "name": "qwert3",
+      "password": "qwerty3",
+      "usertype": "admin",
+      "id": 18
     }
   ],
   "login": [

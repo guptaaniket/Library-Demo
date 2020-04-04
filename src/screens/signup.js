@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { ButtonToggle } from "reactstrap"
-import { NavLink } from "react-router-dom";
+import { NavLink,withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/style.css";
 import "../styles/toast.css";
 toast.configure();
 
-export default class Signup extends Component {
+ class Signup extends Component {
   constructor() {
     super();
     this.state = {
@@ -38,6 +38,8 @@ export default class Signup extends Component {
         body: JSON.stringify(obj),
       }).then((res) => {
         res.json().then((resp) => {
+          this.props.history.push("/login");
+
           toast.success("user is added !", {
             position: toast.POSITION.TOP_RIGHT,
           });
@@ -105,3 +107,5 @@ export default class Signup extends Component {
     );
   }
 }
+
+export default withRouter(Signup)
